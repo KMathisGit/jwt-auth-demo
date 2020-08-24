@@ -20,6 +20,17 @@ After cloning repo and running `npm install`, you can start the application by r
 
 Upon launching the React app you will see a login form. The project comes preloaded with 1 user. You can use the username: `admin` and password: `admin` to login or you can register a new user by clicking the register button at bottom of login form.
 
+## Testing Authentication
+
+Testing authentication is done via the company listing page.
+[http://localhost:3000/companies](http://localhost:3000/companies)
+
+After logging in, you will automatically be redirected to this page.
+
+The endpoint that serves the company data requires the JWT to be present in the Header of the request.
+
+The JWT is gathered upon a successful login and is stored in the app memory. If you have not logged in during the session or refresh the application you will not have a JWT which will prevent you from retrieving the data on the company listing page.
+
 ## Available Scripts
 
 In the project directory, you can run:
