@@ -1,21 +1,35 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## What is the purpose of this?
+
+This project serves as a demo for a simple dev environment that comes equipped with the following:
+
+- React
+- Material-UI (component library for react)
+- React-hook-form + yup (forms and schemas)
+- axios (HTTP client)
+- json-server (mock db server)
+- json-web-token (issues JWT for authentication)
+- Cypress (testing suite)
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs both the React app (in development mode) and json-server which is used as a mock API for authenticationg purposes as well as normal CRUD operations.
+
+Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+The json-server will be running on [http://localhost:3001](http://localhost:3001).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run cy`
+
+Running this command is the same as `npm start` but this will also open up cypress to allow testing.
 
 ### `npm run build`
 
