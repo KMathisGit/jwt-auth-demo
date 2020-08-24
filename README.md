@@ -12,6 +12,14 @@ This project serves as a demo for a simple dev environment that comes equipped w
 - json-web-token (issues JWT for authentication)
 - Cypress (testing suite)
 
+## Running App
+
+After cloning repo and running `npm install`, you can start the application by running `npm start`. This should open the react app in the browser, if not - navigate to [http://localhost:3000](http://localhost:3000).
+
+## Logging in
+
+Upon launching the React app you will see a login form. The project comes preloaded with 1 user. You can use the username: `admin` and password: `admin` to login or you can register a new user by clicking the register button at bottom of login form.
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,1 +1,8 @@
-{"users":[{"username":"admin","password":"admin","email":"admin@gmail.com","id":2},{"id":1,"username":"testuser","password":"password","email":"test@email.com"},{"id":2,"username":"testcase2","password":"testcase2","email":"testcase2@gmail.com"}]}
+{
+    "users": [{
+        "username": "admin",
+        "password": "admin",
+        "email": "admin@email.com",
+        "id": 1
+    }]
+}
