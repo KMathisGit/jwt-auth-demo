@@ -18,7 +18,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs both the React app (in development mode) and json-server which is used as a mock API for authenticationg purposes as well as normal CRUD operations.
+Runs both the React app (in development mode) and json-server which is the mock API for authentication and CRUD operations.
 
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
