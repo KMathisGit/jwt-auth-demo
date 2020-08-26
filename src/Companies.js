@@ -23,10 +23,8 @@ function Users(props) {
   }
 
   useEffect(() => {
-    debugger;
     getCompanies()
       .then((response) => {
-        debugger;
         setCompaniesState(response.data);
       })
       .catch((err) => {
