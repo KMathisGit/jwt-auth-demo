@@ -38,9 +38,9 @@ context("Login tests", () => {
   });
 
   it("should login with registered user", () => {
-    cy.get('input[name="username"]').type("testcase2");
-    cy.get('input[name="password"]').type("testcase2");
+    cy.get('input[name="username"]').clear().type("testcase2");
+    cy.get('input[name="password"]').clear().type("testcase2");
     cy.get("button").contains("Login").click();
-    cy.findByText("Company List").should("exist");
+    cy.findByText("Company A").should("exist");
   });
 });
