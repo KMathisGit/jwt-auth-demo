@@ -26,7 +26,6 @@ context("Register tests", () => {
     cy.get('input[name="username"]').type("testcase2");
     cy.get('input[name="password"]').type("testcase2");
     cy.get('input[name="email"]').type("testcase2@gmail.com");
-    // cy.wait(5000); // ensures previous commited user is now in DB
     cy.get("button").contains("Register").click();
     cy.findByText("Username already exists").should("exist");
   });
@@ -35,6 +34,13 @@ context("Register tests", () => {
 context("Login tests", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/");
+  });
+
+  it("should fail login with non existant username", () => {
+    cy.get('input[name="username"]').clear().type("nonexistant");
+    cy.get('input[name="password"]').clear().type("nonexistant");
+    cy.get("button").contains("Login").click();
+    cy.findByText("Incorrect username and password!").should("exist");
   });
 
   it("should login with registered user", () => {
