@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import Register from "./Register";
+import Home from "./Home";
 import Login from "./Login";
-import Companies from "./Companies";
+import Register from "./Register";
 import { UserContext } from "./UserContext";
 import { validateToken, setAuthToken } from "./api/Api";
 import SessionDetails from "./SessionDetails";
@@ -11,6 +11,7 @@ import NotFound from "./NotFound";
 
 function App() {
   const { userContext, setUserContext } = useContext(UserContext);
+  const [checkingToken, setCheckingToken] = useState(true);
   const accessToken = localStorage.getItem("access_token");
 
   const setDefaultLoggedOut = () => {
@@ -23,24 +24,27 @@ function App() {
 
   useEffect(() => {
     if (accessToken) {
+      setAuthToken(accessToken);
       validateToken(accessToken).then((response) => {
         if (response && response.status === 200) {
           setUserContext({
             isLoggedIn: true,
             user: response.data.username,
           });
-          setAuthToken(accessToken);
+          setCheckingToken(false);
         } else {
           setDefaultLoggedOut();
         }
+        setCheckingToken(false);
       });
     } else {
       setDefaultLoggedOut();
+      setCheckingToken(false);
     }
   }, []);
 
   // check if accessToken is valid
-  if (!userContext) return null;
+  if (checkingToken) return null;
 
   return (
     <div className="App">
@@ -51,7 +55,7 @@ function App() {
         <Route
           path="/"
           exact
-          render={(props) => <Companies {...props} userContext={userContext} />}
+          render={(props) => <Home {...props} userContext={userContext} />}
         />
         <Route
           path="/login"
@@ -68,7 +72,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
       <SessionDetails userContext={userContext} accessToken={accessToken} />
-      <pre>
+      <pre className="app-description">
         This application is a simple demonstration of using a json web token
         (JWT) to authenticate a client in order to access data. This application
         is configured to store JWT in local storage to keep you logged in across

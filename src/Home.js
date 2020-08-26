@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { getCompanies } from "./api/Api";
 
-function Users({ history, userContext }) {
+function Home({ history, userContext }) {
   const [companiesState, setCompaniesState] = useState(null);
 
   if (!userContext || !userContext.isLoggedIn) {
@@ -34,10 +34,10 @@ function Users({ history, userContext }) {
 
       {companiesState && companiesState.length > 0 && (
         <>
-          <pre>
+          <h3>
             Below is a table of data that can only by retrieved with a valid JWT
             present in the request headers.
-          </pre>
+          </h3>
           <TableContainer component={Paper} elevation={2}>
             <Table aria-label="simple table">
               <TableHead>
@@ -67,4 +67,4 @@ function Users({ history, userContext }) {
   );
 }
 
-export default Users;
+export default Home;
