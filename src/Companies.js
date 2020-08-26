@@ -34,36 +34,38 @@ function Users(props) {
 
   return (
     <div>
-      <pre>
-        Below is a table of data that can only by retrieved with a valid JWT
-        present in the request headers.
-      </pre>
       {!companiesState && <CircularProgress variant="indeterminate" />}
 
       {companiesState && companiesState.length > 0 && (
-        <TableContainer component={Paper} elevation={2}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Id</TableCell>
+        <>
+          <pre>
+            Below is a table of data that can only by retrieved with a valid JWT
+            present in the request headers.
+          </pre>
+          <TableContainer component={Paper} elevation={2}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Id</TableCell>
 
-                <TableCell>Company Name</TableCell>
-                <TableCell>Company Address</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {companiesState.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">
-                    {row.id}
-                  </TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.address}</TableCell>
+                  <TableCell>Company Name</TableCell>
+                  <TableCell>Company Address</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {companiesState.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell component="th" scope="row">
+                      {row.id}
+                    </TableCell>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.address}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
       )}
     </div>
   );

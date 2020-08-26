@@ -54,13 +54,13 @@ function App() {
         <Route path="/register" component={Register} />
         <Route component={NotFound} />
       </Switch>
+      <SessionDetails userContext={userContext} accessToken={accessToken} />
       <pre>
         This application is a simple demonstration of using a json web token
         (JWT) to authenticate a client in order to access data. This application
         is configured to store JWT in local storage to keep you logged in across
         sessions - as long as token is not expired (1 hour expiration).
       </pre>
-      <SessionDetails userContext={userContext} accessToken={accessToken} />
     </div>
   );
 }
