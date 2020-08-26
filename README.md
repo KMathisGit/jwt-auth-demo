@@ -8,8 +8,8 @@ This project serves as a demo for a simple dev environment that comes equipped w
 - Material-UI (component library for react)
 - React-hook-form + yup (forms and schemas)
 - axios (HTTP client)
-- json-server (mock db server)
-- json-web-token (issues JWT for authentication)
+- json-server (mock api)
+- json-web-token (authentication)
 - Cypress (testing suite)
 
 ## Running App
