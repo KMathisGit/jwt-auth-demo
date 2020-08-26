@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { registerUser, getUsers } from "./api/Api";
 import { toast } from "react-toastify";
 import { Button, TextField, Card, CardContent } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required().min(5).label("Username"),
@@ -13,21 +14,22 @@ const registerSchema = yup.object().shape({
 });
 
 function Register(props) {
-  const [usersState, setUsersState] = useState([]);
-  const [usernameExists, setUsernameExists] = useState(false);
+  const { userContext, setUserContext } = useContext(UserContext);
   const { register, handleSubmit, errors } = useForm({
     validationSchema: registerSchema,
   });
   const history = useHistory();
 
+  // if user comes to login page ensure a logged out state is in effect
   useEffect(() => {
-    // getUsers().then((response) => {
-    //   setUsersState(response.data);
-    // });
+    setUserContext({
+      isLoggedIn: false,
+      user: null,
+    });
+    localStorage.removeItem("access_token");
   }, []);
 
   const saveData = (data) => {
-    if (usernameExists) return;
     registerUser(data).then((response) => {
       if (response.status === 200) {
         toast.success(`You have been registered!`);
@@ -38,14 +40,6 @@ function Register(props) {
         toast.error("Username already exists");
       }
     });
-  };
-
-  const checkIfUsernameExists = (e) => {
-    let currentUsername = e.target.value;
-    // check if username already exists
-    let user = usersState.find((e) => e.username === currentUsername);
-    if (user) setUsernameExists(true);
-    else setUsernameExists(false);
   };
 
   return (
@@ -60,14 +54,8 @@ function Register(props) {
               variant="outlined"
               inputRef={register}
               margin="dense"
-              error={!!errors.username || usernameExists}
-              helperText={
-                !!errors.username
-                  ? errors.username.message
-                  : usernameExists
-                  ? "Username already exists"
-                  : null
-              }
+              error={!!errors.username}
+              helperText={!!errors.username ? errors.username.message : null}
               style={{ width: "400px" }}
               // onChange={checkIfUsernameExists}
             />

@@ -111,6 +111,25 @@ server.post("/auth/login", (req, res) => {
   res.status(200).json({ access_token });
 });
 
+server.post("/auth/validate", (req, res) => {
+  console.log("validate endpoint called; request body:");
+  console.log(req.body);
+  const { access_token } = req.body;
+  try {
+    let verifyTokenResult = verifyToken(access_token);
+
+    if (verifyTokenResult instanceof Error) {
+      throw verifyTokenResult;
+    } else {
+      res.status(200).json(verifyTokenResult);
+    }
+  } catch (err) {
+    const status = 401;
+    const message = "Error access_token is revoked";
+    res.status(status).json({ status, message });
+  }
+});
+
 // any requests that do not start with /auth require access token
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
   if (

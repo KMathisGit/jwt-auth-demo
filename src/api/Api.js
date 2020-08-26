@@ -9,6 +9,15 @@ const options = {
 
 export const setAuthToken = (token) => {
   options.headers.Authorization = "Bearer " + token;
+  localStorage.setItem("access_token", token);
+};
+
+export const validateToken = (token) => {
+  return axios.post(
+    `${BASE_URL}/auth/validate`,
+    { access_token: token },
+    options
+  );
 };
 
 export const registerUser = (data) => {

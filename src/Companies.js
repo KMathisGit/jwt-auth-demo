@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   TableContainer,
   Table,
@@ -10,17 +10,23 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { getCompanies } from "./api/Api";
+import { useHistory } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 function Users(props) {
   const [companiesState, setCompaniesState] = useState(null);
-  const [unauthorizedState, setUnauthorizedState] = useState(false);
+  const { userContext, setUserContext } = useContext(UserContext);
+  const history = useHistory();
+
+  if (!userContext || !userContext.isLoggedIn) {
+    history.push("/login");
+  }
 
   useEffect(() => {
+    debugger;
     getCompanies()
       .then((response) => {
-        if (response.status === 401) {
-          setUnauthorizedState(true);
-        }
+        debugger;
         setCompaniesState(response.data);
       })
       .catch((err) => {
@@ -28,14 +34,12 @@ function Users(props) {
       });
   }, []);
 
-  if (unauthorizedState) {
-    return <h2>You are unauthorized to view this!</h2>;
-  }
-
   return (
     <div>
-      <h2>Company List</h2>
-
+      <pre>
+        Below is a table of data that can only by retrieved with a valid JWT
+        present in the request headers.
+      </pre>
       {!companiesState && <CircularProgress variant="indeterminate" />}
 
       {companiesState && companiesState.length > 0 && (
