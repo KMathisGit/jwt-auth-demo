@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 import Companies from "./Companies";
-import Home from "./Home";
 import { UserContext } from "./UserContext";
 import { validateToken, setAuthToken } from "./api/Api";
 import SessionDetails from "./SessionDetails";
@@ -49,9 +48,23 @@ function App() {
         React Mock <br /> Auth Login App
       </h1>
       <Switch>
-        <Route path="/" exact component={Companies} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Route
+          path="/"
+          exact
+          render={(props) => <Companies {...props} userContext={userContext} />}
+        />
+        <Route
+          path="/login"
+          render={(props) => (
+            <Login {...props} setUserContext={setUserContext} />
+          )}
+        />
+        <Route
+          path="/register"
+          render={(props) => (
+            <Register {...props} setUserContext={setUserContext} />
+          )}
+        />
         <Route component={NotFound} />
       </Switch>
       <SessionDetails userContext={userContext} accessToken={accessToken} />

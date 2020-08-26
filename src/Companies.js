@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TableContainer,
   Table,
@@ -10,13 +10,9 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { getCompanies } from "./api/Api";
-import { useHistory } from "react-router-dom";
-import { UserContext } from "./UserContext";
 
-function Users(props) {
+function Users({ history, userContext }) {
   const [companiesState, setCompaniesState] = useState(null);
-  const { userContext, setUserContext } = useContext(UserContext);
-  const history = useHistory();
 
   if (!userContext || !userContext.isLoggedIn) {
     history.push("/login");

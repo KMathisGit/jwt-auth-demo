@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { registerUser, getUsers } from "./api/Api";
+import { registerUser } from "./api/Api";
 import { toast } from "react-toastify";
 import { Button, TextField, Card, CardContent } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import { UserContext } from "./UserContext";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required().min(5).label("Username"),
@@ -13,12 +11,10 @@ const registerSchema = yup.object().shape({
   email: yup.string().email().required(),
 });
 
-function Register(props) {
-  const { userContext, setUserContext } = useContext(UserContext);
+function Register({ setUserContext, history }) {
   const { register, handleSubmit, errors } = useForm({
     validationSchema: registerSchema,
   });
-  const history = useHistory();
 
   // if user comes to login page ensure a logged out state is in effect
   useEffect(() => {
@@ -57,7 +53,6 @@ function Register(props) {
               error={!!errors.username}
               helperText={!!errors.username ? errors.username.message : null}
               style={{ width: "400px" }}
-              // onChange={checkIfUsernameExists}
             />
             <br />
             <TextField

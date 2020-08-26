@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { Card, CardContent, TextField, Button } from "@material-ui/core";
 import { loginUser, setAuthToken } from "./api/Api";
-import { useHistory } from "react-router-dom";
-import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
 
 const loginSchema = yup.object().shape({
@@ -12,9 +10,7 @@ const loginSchema = yup.object().shape({
   password: yup.string().min(5),
 });
 
-function Login(props) {
-  const { userContext, setUserContext } = useContext(UserContext);
-
+function Login({ setUserContext, history }) {
   // if user comes to login page ensure a logged out state is in effect
   useEffect(() => {
     setUserContext({
@@ -23,8 +19,6 @@ function Login(props) {
     });
     localStorage.removeItem("access_token");
   }, []);
-
-  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     validationSchema: loginSchema,
