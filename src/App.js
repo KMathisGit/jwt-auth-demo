@@ -49,7 +49,8 @@ function App() {
   return (
     <div className="App">
       <h1 className="App-header">
-        React Mock <br /> Auth Login App
+        JWT Auth
+        <br /> Demonstration
       </h1>
       <Switch>
         <Route
