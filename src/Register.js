@@ -7,8 +7,8 @@ import { Button, TextField, Card, CardContent } from "@material-ui/core";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required().min(5).label("Username"),
-  password: yup.string().min(5),
-  email: yup.string().email().required(),
+  password: yup.string().required().min(5).label("Password"),
+  email: yup.string().email().required().label("Email"),
 });
 
 function Register({ setUserContext, history }) {
