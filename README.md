@@ -16,6 +16,8 @@ This project serves as a demo for a simple dev environment that comes equipped w
 
 After cloning repo and running `npm install`, you can start the application by running `npm start`. This should open the react app in the browser, if not - navigate to [http://localhost:3000](http://localhost:3000).
 
+![image](https://user-images.githubusercontent.com/20864335/124171404-85c1d180-da76-11eb-9ed9-bc170868f94f.png)
+
 ## Logging in
 
 Upon launching the React app you will see a login form. The project comes preloaded with 1 user. You can use the username: `admin` and password: `admin` to login or you can register a new user by clicking the register button at bottom of login form which will redirect to [http://localhost:3000/register](http://localhost:3000/register).
