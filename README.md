@@ -2,7 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What is the purpose of this?
 
-This project serves as a demo for a simple dev environment that comes equipped with the following:
+This project serves as a demonstration for how to manage client side authentication via a server that manages [JWT](https://jwt.io/). 
+
+This project comes equipped with the following things:
 
 - React
 - Material-UI (component library for react)
@@ -15,6 +17,8 @@ This project serves as a demo for a simple dev environment that comes equipped w
 ## Running App
 
 After cloning repo and running `npm install`, you can start the application by running `npm start`. This should open the react app in the browser, if not - navigate to [http://localhost:3000](http://localhost:3000).
+
+![image](https://user-images.githubusercontent.com/20864335/124171404-85c1d180-da76-11eb-9ed9-bc170868f94f.png)
 
 ## Logging in
 
