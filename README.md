@@ -30,6 +30,10 @@ The endpoint that serves the company data requires the JWT to be present in the 
 
 The JWT is stored in browser local storage and the app is configured to pull it from there, meaning you can stay logged in across sessions assuming that the token has not expired (1 hour expiration).
 
+## Running Cypress (E2E Testing)
+
+Run the following command `npm run cy` this will start up the client and server just like `npm start` and will also open up cypress allowing you to select tests to run.
+
 ## Available Scripts
 
 In the project directory, you can run:
