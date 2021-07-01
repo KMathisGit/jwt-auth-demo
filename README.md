@@ -18,7 +18,8 @@ This project comes equipped with the following things:
 
 After cloning repo and running `npm install`, you can start the application by running `npm start`. This should open the react app in the browser, if not - navigate to [http://localhost:3000](http://localhost:3000).
 
-![image](https://user-images.githubusercontent.com/20864335/124171404-85c1d180-da76-11eb-9ed9-bc170868f94f.png)
+![image](https://user-images.githubusercontent.com/20864335/124173160-a854ea00-da78-11eb-9a8c-e8fcdf0f37f1.png)
+
 
 ## Logging in
 
